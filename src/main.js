@@ -1,15 +1,14 @@
 import React from 'react';
-import Login from './components/login';
+import Header from './components/header';
 import store from './store';
 
-class Main extends React.Component {
+export default class Main extends React.Component {
   render() {
+    const state = store.getState();
     return (
       <div className="parent">
-        <Login />
+        <Header />
       </div>
     );
   }
 }
-
-export default Main;

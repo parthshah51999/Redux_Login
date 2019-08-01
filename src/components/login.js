@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
+import store from '../store/index';
+import { setLoginData } from '../action/index';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default class Login extends Component {
+const mapStateToProps = (state) => {
+  return { isUserLoggedIn: state.isUserLoggedIn };
+}
+
+export class Login extends Component {
   render() {
     return (
+      this.props.isUserLoggedIn ? <Redirect to = "/Home" /> :
       <Formik
         initialValues = {{
           email: '',
@@ -26,8 +35,11 @@ export default class Login extends Component {
         onSubmit = {fields => {
           axios.post(`https://reqres.in/api/login`, { email: fields.email, password: fields.password })
           .then(res => {
-            console.log(res);
-            console.log(res.data);
+            store.dispatch(setLoginData(fields));
+          })
+          .catch(error => {
+            console.log(error);
+            alert('Please enter valid credentials.');
           })
         }}
 
@@ -64,3 +76,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Login);
