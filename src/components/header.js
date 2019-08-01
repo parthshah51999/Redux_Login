@@ -3,6 +3,7 @@ import { Route, NavLink, HashRouter } from 'react-router-dom';
 import AboutUs from './aboutUs';
 import Home from './home';
 import Login from './login';
+import Register from './register';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -13,9 +14,10 @@ const COMPONENT_MAP = {
   'AboutUs': AboutUs,
   'Home': Home,
   'Login': Login,
+  'Register': Register,
 }
 
-let links = ['Home', 'Login', 'About Us'];
+let links = ['Home', 'Login', 'Register', 'About Us'];
 export const Header = (props) => {
   const displayLinks = props.isUserLoggedIn ? ['Home', 'About Us'] : [...links];
   return (
