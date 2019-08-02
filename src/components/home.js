@@ -14,9 +14,7 @@ export class Home extends React.Component {
       ? (
         <div>
           <h1>
-            Welcome
-            {email}
-            !
+            Welcome {email}!
           </h1>
           <p> You have successfully logged into the application.</p>
           <button
