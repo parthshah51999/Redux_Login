@@ -16,6 +16,9 @@ module.exports = () => {
     resolve: {
       extensions: ['*', '.js', '.css'],
     },
+    devtool: (() => {
+      return 'cheap-module-eval-source-map'
+    })(),
     module: {
         rules: [
           {
@@ -23,6 +26,10 @@ module.exports = () => {
             loader: 'babel-loader',
             exclude: /node_modules/,
           },
+          {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+          }
         ],
       },
   };
