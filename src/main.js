@@ -1,14 +1,12 @@
 import React from 'react';
 import Header from './components/header';
-import store from './store';
+import Footer from './components/footer';
 
-export default class Main extends React.Component {
-  render() {
-    const state = store.getState();
-    return (
-      <div className="parent">
-        <Header />
-      </div>
-    );
-  }
-}
+const Main = () => (
+  <div className="parent">
+    <Header />
+    <Footer />
+  </div>
+);
+
+export default Main;

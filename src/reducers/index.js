@@ -5,7 +5,11 @@ export default (state, action) => {
         ...state,
         email: action.payload.email,
         isUserLoggedIn: action.payload.isUserLoggedIn,
-      }
+      };
+    case 'userLogout':
+      return {
+        isUserLoggedIn: action.payload.isUserLoggedIn,
+      };
     default:
       return state;
   }
